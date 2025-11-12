@@ -1,0 +1,13 @@
+
+test-doc-092-sample.mpgNLThis document was processed by the parser but no text content was extracted."è
+*type.googleapis.com/google.protobuf.Struct¹
+A
+x_tika_parsed_by_full_set$"org.apache.tika.parser.EmptyParser
+
+content_type
+video/mpeg
+
+resourcename
+sample.mpg
+8
+x_tika_parsed_by$"org.apache.tika.parser.EmptyParser

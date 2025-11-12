@@ -284,3 +284,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+.gradle
+.idea
+build
+.claude
