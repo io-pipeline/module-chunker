@@ -1,11 +1,36 @@
 package ai.pipestream.module.chunker.examples;
 
+/**
+ * Collection of sample documents used for testing and demonstration of the chunker service.
+ *
+ * <p>This utility class provides various text samples representing different content types:
+ * <ul>
+ *   <li>Legal/formal text (US Constitution)</li>
+ *   <li>Technical documentation (API reference)</li>
+ *   <li>Literary excerpts (classic literature)</li>
+ *   <li>News articles (contemporary journalism)</li>
+ * </ul>
+ *
+ * <p>These samples are used in:
+ * <ul>
+ *   <li>OpenAPI schema examples for ChunkerConfig</li>
+ *   <li>Integration tests for validating chunking algorithms</li>
+ *   <li>API documentation and Swagger UI demonstrations</li>
+ * </ul>
+ *
+ * @see ai.pipestream.module.chunker.config.ChunkerConfig
+ */
 public final class SampleDocuments {
-    
+
     private SampleDocuments() {
-        // Utility class
+        // Utility class - prevent instantiation
     }
-    
+
+    /**
+     * Excerpt from the US Constitution preamble and Article I.
+     * Approximately 200 words of formal legal text with structured sections.
+     * Good for testing sentence-based and character-based chunking algorithms.
+     */
     public static final String US_CONSTITUTION_PREAMBLE = """
         We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.
         
@@ -17,7 +42,12 @@ public final class SampleDocuments {
         
         No Person shall be a Representative who shall not have attained to the Age of twenty five Years, and been seven Years a Citizen of the United States, and who shall not, when elected, be an Inhabitant of that State in which he shall be chosen.
         """;
-    
+
+    /**
+     * API documentation for a user authentication system.
+     * Approximately 200 words of technical documentation with lists, endpoints, and structured information.
+     * Good for testing token-based chunking and handling of technical terminology.
+     */
     public static final String TECHNICAL_DOCUMENTATION = """
         API Documentation: User Authentication
         
@@ -43,7 +73,12 @@ public final class SampleDocuments {
         Error Handling
         All API endpoints return standardized error responses with appropriate HTTP status codes and descriptive error messages.
         """;
-    
+
+    /**
+     * Excerpt from Charles Dickens' "A Tale of Two Cities".
+     * Approximately 250 words of classic literature with complex sentence structures.
+     * Good for testing sentence-based chunking with long, complex sentences.
+     */
     public static final String LITERARY_EXCERPT = """
         Chapter 1: The Beginning
         
@@ -53,7 +88,12 @@ public final class SampleDocuments {
         
         There were a king with a large jaw and a queen with a plain face, on the throne of England; there were a king with a large jaw and a queen with a fair face, on the throne of France. In both countries it was clearer than crystal to the lords of the State preserves of loaves and fishes, that things in general were settled for ever.
         """;
-    
+
+    /**
+     * Contemporary news article about a technology breakthrough.
+     * Approximately 200 words of journalistic writing with quotes and facts.
+     * Good for testing URL preservation and handling of quotes and percentages.
+     */
     public static final String NEWS_ARTICLE = """
         Breaking: Major Technology Breakthrough Announced
         
@@ -67,7 +107,11 @@ public final class SampleDocuments {
         
         Stock markets responded positively to the announcement, with technology sector indices rising 3.2% in early trading.
         """;
-    
+
+    /**
+     * Array containing all sample text documents for batch testing.
+     * Useful for iterating through different content types in tests.
+     */
     public static final String[] SAMPLE_TEXTS = {
         US_CONSTITUTION_PREAMBLE,
         TECHNICAL_DOCUMENTATION,

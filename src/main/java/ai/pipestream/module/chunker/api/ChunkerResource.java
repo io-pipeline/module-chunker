@@ -26,6 +26,24 @@ import org.jboss.logging.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Legacy REST resource for testing the gRPC Chunker service.
+ *
+ * <p>This resource provides HTTP endpoints that wrap the underlying gRPC service,
+ * primarily used for development testing and debugging. For production use,
+ * prefer {@link ChunkerServiceEndpoint} which offers a more feature-rich REST API.
+ *
+ * <p><b>Key Endpoints:</b>
+ * <ul>
+ *   <li>{@code POST /api/chunker/process} - Process a document through gRPC service</li>
+ *   <li>{@code GET /api/chunker/info} - Get service registration and schema information</li>
+ *   <li>{@code GET /api/chunker/health} - Simple health check</li>
+ * </ul>
+ *
+ * @see ChunkerServiceEndpoint
+ * @deprecated This is a legacy testing endpoint. Use {@link ChunkerServiceEndpoint} for production REST API access.
+ */
+@Deprecated
 @Path("/api/chunker")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

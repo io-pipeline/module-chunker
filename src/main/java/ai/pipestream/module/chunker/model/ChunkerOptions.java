@@ -6,6 +6,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.Struct;
 import com.google.protobuf.util.JsonFormat;
 
+/**
+ * Legacy configuration options for text chunking operations.
+ * This record is being phased out in favor of {@link ai.pipestream.module.chunker.config.ChunkerConfig}.
+ *
+ * <p>Contains settings for chunk size, overlap, field selection, and ID generation templates.
+ * Used primarily for backwards compatibility with older chunking configurations.
+ *
+ * @deprecated Use {@link ai.pipestream.module.chunker.config.ChunkerConfig} instead for new implementations
+ */
+@Deprecated
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record ChunkerOptions(
         @JsonProperty("source_field") String sourceField,
@@ -26,6 +36,19 @@ public record ChunkerOptions(
     public static final String DEFAULT_LOG_PREFIX = "";
     public static final boolean DEFAULT_PRESERVE_URLS = false;
 
+    /**
+     * Canonical constructor with default value handling.
+     * Ensures all parameters have valid default values if null or invalid.
+     *
+     * @param sourceField Document field to extract text from (defaults to "body")
+     * @param chunkSize Target size for each chunk (defaults to 500)
+     * @param chunkOverlap Overlap between consecutive chunks (defaults to 50)
+     * @param chunkIdTemplate Template for generating chunk IDs
+     * @param chunkConfigId Configuration identifier
+     * @param resultSetNameTemplate Template for result set naming
+     * @param logPrefix Prefix for log messages
+     * @param preserveUrls Whether to preserve URLs during chunking
+     */
     public ChunkerOptions(
             String sourceField,
             int chunkSize,
@@ -46,6 +69,9 @@ public record ChunkerOptions(
         this.preserveUrls = preserveUrls != null ? preserveUrls : DEFAULT_PRESERVE_URLS;
     }
 
+    /**
+     * Default constructor using standard configuration values.
+     */
     public ChunkerOptions() {
         this(DEFAULT_SOURCE_FIELD,
                 DEFAULT_CHUNK_SIZE,
@@ -57,6 +83,12 @@ public record ChunkerOptions(
                 DEFAULT_PRESERVE_URLS);
     }
 
+    /**
+     * Generates a JSON Schema (Draft 7) representation of this configuration.
+     * Useful for validation and documentation purposes.
+     *
+     * @return JSON Schema string describing the ChunkerOptions structure
+     */
     public static String getJsonV7Schema() {
         return """
                 {
@@ -130,6 +162,12 @@ public record ChunkerOptions(
         );
     }
 
+    /**
+     * Converts this ChunkerOptions to a Protobuf Struct for gRPC communication.
+     *
+     * @return Protobuf Struct representation
+     * @throws RuntimeException if conversion fails
+     */
     public Struct toStruct() {
         try {
             ObjectMapper mapper = new ObjectMapper();
